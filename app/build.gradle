@@ -58,11 +58,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-
     implementation 'com.google.dagger:hilt-android:2.43.2'
     kapt 'com.google.dagger:hilt-compiler:2.43.2'
-
-
 
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
@@ -95,5 +92,7 @@ dependencies {
 
     // TestImplementations
     implementation "androidx.test:core:1.4.0"
+
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
 
 }

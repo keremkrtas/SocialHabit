@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemSocial"
+        android:title="Social"
+        android:icon="@drawable/ic_launcher_background"
+        />
+    <item
+        android:id="@+id/itemMyHabit"
+        android:title="My Habit"
+        android:icon="@drawable/ic_launcher_background"
+
+        />
+</menu>

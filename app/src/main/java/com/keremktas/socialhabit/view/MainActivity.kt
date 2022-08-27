@@ -1,19 +1,19 @@
 package com.keremktas.socialhabit.view
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.keremktas.socialhabit.R
 import com.keremktas.socialhabit.databinding.ActivityMainBinding
-import com.keremktas.socialhabit.utils.startAct
 import com.keremktas.socialhabit.viewmodel.MainActivityVM
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -31,15 +31,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        replaceFragment(HomeFragment())
+        binding.navbar.setOnItemSelectedListener {
 
-        if (currentUser!=null){
-            Toast.makeText(applicationContext,currentUser.displayName, Toast.LENGTH_SHORT).show()
-        }else{
-            Intent().startAct(applicationContext, LoginActivity::class.java)
+            when(it){
+
+                0 -> replaceFragment(HomeFragment())
+                1-> replaceFragment(MyHabitFragment())
+            }
         }
 
 
     }
 
+    private fun replaceFragment(fragment : Fragment){
 
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView,fragment)
+        fragmentTransaction.commit()
+
+    }
 }

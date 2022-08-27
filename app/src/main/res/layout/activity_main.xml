@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:backgroundColor="@color/alternative_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu"
+
+        />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.keremktas.socialhabit.view.HomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/smoothBottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

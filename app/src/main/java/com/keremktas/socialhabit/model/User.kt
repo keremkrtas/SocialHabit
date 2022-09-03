@@ -6,8 +6,8 @@ data class User(
     val Username: String,
     val email: String,
     val photoUrl: String,
-    val availableSubjectsId: List<String>,
     val bio: String="",
-    val followingsId: List<String>?,
-    val followersId: List<String>?
+    val availableSubjectsId: List<String>?= listOf(),
+    val followingsId: List<String>?= listOf(),
+    val followersId: List<String>?=listOf()
 )

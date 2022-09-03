@@ -1,6 +1,7 @@
 package com.keremktas.socialhabit.view
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -31,24 +32,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
-        binding.navbar.setOnItemSelectedListener {
+        if (currentUser != null) {
+            replaceFragment(HomeFragment())
+            binding.navbar.setOnItemSelectedListener {
 
-            when(it){
+                when (it) {
 
-                0 -> replaceFragment(HomeFragment())
-                1-> replaceFragment(MyHabitFragment())
+                    0 -> replaceFragment(HomeFragment())
+                    1 -> replaceFragment(MyHabitFragment())
+                }
+
+
+
             }
+        }else{
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent)
         }
-
 
     }
 
-    private fun replaceFragment(fragment : Fragment){
+    private fun replaceFragment(fragment: Fragment) {
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainerView,fragment)
+        fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
         fragmentTransaction.commit()
 
     }

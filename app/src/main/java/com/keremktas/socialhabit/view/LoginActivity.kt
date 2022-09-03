@@ -19,7 +19,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.keremktas.socialhabit.databinding.ActivityLoginBinding
 import com.keremktas.socialhabit.utils.Utils
-import com.keremktas.socialhabit.utils.startAct
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -66,7 +65,8 @@ class LoginActivity : AppCompatActivity() {
             .build()
 
         binding.btnOneTap.setOnClickListener {
-            displaySignIn()
+            //displaySignIn()
+            displaySignUp()
         }
 
     }
@@ -127,7 +127,9 @@ class LoginActivity : AppCompatActivity() {
                                     val user = auth.currentUser
                                     Log.e("****111", user!!.email.toString())
                                     // updateUI(user)
-                                    Intent().startAct(applicationContext,MainActivity::class.java)
+                                    val intent = Intent(applicationContext,CreateUserActivity::class.java)
+                                    startActivity(intent)
+                                    //TODO
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(StateSet.TAG, "signInWithCredential:failure", task.exception)
